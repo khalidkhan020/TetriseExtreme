@@ -76,10 +76,10 @@ public class MainView extends View {
         game = new MainGame(context, this);
         try {
             //Getting assets
-            backgroundRectangle = getDrawable(com.appzone.game.R.drawable.background_rectangle);
-            lightUpRectangle = getDrawable(com.appzone.game.R.drawable.light_up_rectangle);
-            fadeRectangle = getDrawable(com.appzone.game.R.drawable.fade_rectangle);
-            this.setBackgroundColor(getResources().getColor(com.appzone.game.R.color.background));
+            backgroundRectangle = getDrawable(R.drawable.background_rectangle);
+            lightUpRectangle = getDrawable(R.drawable.light_up_rectangle);
+            fadeRectangle = getDrawable(R.drawable.fade_rectangle);
+            this.setBackgroundColor(getResources().getColor(R.color.background));
             Typeface font = Typeface.createFromAsset(getResources().getAssets(), "ClearSans-Bold.ttf");
             paint.setTypeface(font);
             paint.setAntiAlias(true);
@@ -150,9 +150,9 @@ public class MainView extends View {
     private void drawCellText(Canvas canvas, int value) {
         int textShiftY = centerText();
         if (value >= 8) {
-            paint.setColor(getResources().getColor(com.appzone.game.R.color.text_white));
+            paint.setColor(getResources().getColor(R.color.text_white));
         } else {
-            paint.setColor(getResources().getColor(com.appzone.game.R.color.text_black));
+            paint.setColor(getResources().getColor(R.color.text_black));
         }
         canvas.drawText("" + value, cellSize / 2, cellSize / 2 - textShiftY, paint);
     }
@@ -181,10 +181,10 @@ public class MainView extends View {
         backgroundRectangle.setBounds(sXHighScore, sYAll, eXHighScore, eYAll);
         backgroundRectangle.draw(canvas);
         paint.setTextSize(titleTextSize);
-        paint.setColor(getResources().getColor(com.appzone.game.R.color.text_brown));
-        canvas.drawText(getResources().getString(com.appzone.game.R.string.high_score), sXHighScore + textMiddleHighScore, titleStartYAll, paint);
+        paint.setColor(getResources().getColor(R.color.text_brown));
+        canvas.drawText(getResources().getString(R.string.high_score), sXHighScore + textMiddleHighScore, titleStartYAll, paint);
         paint.setTextSize(bodyTextSize);
-        paint.setColor(getResources().getColor(com.appzone.game.R.color.text_white));
+        paint.setColor(getResources().getColor(R.color.text_white));
         canvas.drawText(String.valueOf(game.highScore), sXHighScore + textMiddleHighScore, bodyStartYAll, paint);
 
 
@@ -192,10 +192,10 @@ public class MainView extends View {
         backgroundRectangle.setBounds(sXScore, sYAll, eXScore, eYAll);
         backgroundRectangle.draw(canvas);
         paint.setTextSize(titleTextSize);
-        paint.setColor(getResources().getColor(com.appzone.game.R.color.text_brown));
-        canvas.drawText(getResources().getString(com.appzone.game.R.string.score), sXScore + textMiddleScore, titleStartYAll, paint);
+        paint.setColor(getResources().getColor(R.color.text_brown));
+        canvas.drawText(getResources().getString(R.string.score), sXScore + textMiddleScore, titleStartYAll, paint);
         paint.setTextSize(bodyTextSize);
-        paint.setColor(getResources().getColor(com.appzone.game.R.color.text_white));
+        paint.setColor(getResources().getColor(R.color.text_white));
         canvas.drawText(String.valueOf(game.score), sXScore + textMiddleScore, bodyStartYAll, paint);
     }
 
@@ -219,7 +219,7 @@ public class MainView extends View {
         }
 
         drawDrawable(canvas,
-                getDrawable(com.appzone.game.R.drawable.ic_action_refresh),
+                getDrawable(R.drawable.ic_action_refresh),
                 sXNewGame + iconPaddingSize,
                 sYIcons + iconPaddingSize,
                 sXNewGame + iconSize - iconPaddingSize,
@@ -229,36 +229,25 @@ public class MainView extends View {
 
     private void drawUndoButton(Canvas canvas) {
 
-        drawDrawable(canvas,
-                backgroundRectangle,
-                sXUndo,
-                sYIcons, sXUndo + iconSize,
-                sYIcons + iconSize
-        );
+        drawDrawable(canvas, backgroundRectangle, sXUndo, sYIcons, sXUndo + iconSize, sYIcons + iconSize);
 
-        drawDrawable(canvas,
-                getDrawable(com.appzone.game.R.drawable.ic_action_undo),
-                sXUndo + iconPaddingSize,
-                sYIcons + iconPaddingSize,
-                sXUndo + iconSize - iconPaddingSize,
-                sYIcons + iconSize - iconPaddingSize
-        );
+        drawDrawable(canvas, getDrawable(R.drawable.ic_action_undo), sXUndo + iconPaddingSize, sYIcons + iconPaddingSize, sXUndo + iconSize - iconPaddingSize, sYIcons + iconSize - iconPaddingSize);
     }
 
     private void drawHeader(Canvas canvas) {
         paint.setTextSize(headerTextSize);
-        paint.setColor(getResources().getColor(com.appzone.game.R.color.text_black));
+        paint.setColor(getResources().getColor(R.color.text_black));
         paint.setTextAlign(Paint.Align.LEFT);
         int textShiftY = centerText() * 2;
         int headerStartY = sYAll - textShiftY;
-        canvas.drawText(getResources().getString(com.appzone.game.R.string.header), startingX, headerStartY, paint);
+        canvas.drawText(getResources().getString(R.string.header), startingX, headerStartY, paint);
     }
 
     private void drawInstructions(Canvas canvas) {
         paint.setTextSize(instructionsTextSize);
         paint.setTextAlign(Paint.Align.LEFT);
         int textShiftY = centerText() * 2;
-        canvas.drawText(getResources().getString(com.appzone.game.R.string.instructions),
+        canvas.drawText(getResources().getString(R.string.instructions),
                 startingX, endingY - textShiftY + textPaddingSize, paint);
     }
 
@@ -269,7 +258,7 @@ public class MainView extends View {
     //Renders the set of 16 background squares.
     private void drawBackgroundGrid(Canvas canvas) {
         Resources resources = getResources();
-        Drawable backgroundCell = getDrawable(com.appzone.game.R.drawable.cell_rectangle);
+        Drawable backgroundCell = getDrawable(R.drawable.cell_rectangle);
         // Outputting the game grid
         for (int xx = 0; xx < game.numSquaresX; xx++) {
             for (int yy = 0; yy < game.numSquaresY; yy++) {
@@ -388,8 +377,8 @@ public class MainView extends View {
     private void drawEndlessText(Canvas canvas) {
         paint.setTextAlign(Paint.Align.LEFT);
         paint.setTextSize(bodyTextSize);
-        paint.setColor(getResources().getColor(com.appzone.game.R.color.text_black));
-        canvas.drawText(getResources().getString(com.appzone.game.R.string.endless), startingX, sYIcons - centerText() * 2, paint);
+        paint.setColor(getResources().getColor(R.color.text_black));
+        canvas.drawText(getResources().getString(R.string.endless), startingX, sYIcons - centerText() * 2, paint);
     }
 
     private void createEndGameStates(Canvas canvas, boolean win, boolean showButton) {
@@ -401,25 +390,25 @@ public class MainView extends View {
             lightUpRectangle.setAlpha(127);
             drawDrawable(canvas, lightUpRectangle, 0, 0, width, length);
             lightUpRectangle.setAlpha(255);
-            paint.setColor(getResources().getColor(com.appzone.game.R.color.text_white));
+            paint.setColor(getResources().getColor(R.color.text_white));
             paint.setAlpha(255);
             paint.setTextSize(gameOverTextSize);
             paint.setTextAlign(Paint.Align.CENTER);
             int textBottom = middleY - centerText();
-            canvas.drawText(getResources().getString(com.appzone.game.R.string.you_win), middleX, textBottom, paint);
+            canvas.drawText(getResources().getString(R.string.you_win), middleX, textBottom, paint);
             paint.setTextSize(bodyTextSize);
-            String text = showButton ? getResources().getString(com.appzone.game.R.string.go_on) :
-                    getResources().getString(com.appzone.game.R.string.for_now);
+            String text = showButton ? getResources().getString(R.string.go_on) :
+                    getResources().getString(R.string.for_now);
             canvas.drawText(text, middleX, textBottom + textPaddingSize * 2 - centerText() * 2, paint);
         } else {
             fadeRectangle.setAlpha(127);
             drawDrawable(canvas, fadeRectangle, 0, 0, width, length);
             fadeRectangle.setAlpha(255);
-            paint.setColor(getResources().getColor(com.appzone.game.R.color.text_black));
+            paint.setColor(getResources().getColor(R.color.text_black));
             paint.setAlpha(255);
             paint.setTextSize(gameOverTextSize);
             paint.setTextAlign(Paint.Align.CENTER);
-            canvas.drawText(getResources().getString(com.appzone.game.R.string.game_over), middleX, middleY - centerText(), paint);
+            canvas.drawText(getResources().getString(R.string.game_over), middleX, middleY - centerText(), paint);
         }
     }
 
@@ -454,20 +443,20 @@ public class MainView extends View {
 
     private int[] getCellRectangleIds() {
         int[] cellRectangleIds = new int[numCellTypes];
-        cellRectangleIds[0] = com.appzone.game.R.drawable.cell_rectangle;
-        cellRectangleIds[1] = com.appzone.game.R.drawable.cell_rectangle_2;
-        cellRectangleIds[2] = com.appzone.game.R.drawable.cell_rectangle_4;
-        cellRectangleIds[3] = com.appzone.game.R.drawable.cell_rectangle_8;
-        cellRectangleIds[4] = com.appzone.game.R.drawable.cell_rectangle_16;
-        cellRectangleIds[5] = com.appzone.game.R.drawable.cell_rectangle_32;
-        cellRectangleIds[6] = com.appzone.game.R.drawable.cell_rectangle_64;
-        cellRectangleIds[7] = com.appzone.game.R.drawable.cell_rectangle_128;
-        cellRectangleIds[8] = com.appzone.game.R.drawable.cell_rectangle_256;
-        cellRectangleIds[9] = com.appzone.game.R.drawable.cell_rectangle_512;
-        cellRectangleIds[10] = com.appzone.game.R.drawable.cell_rectangle_1024;
-        cellRectangleIds[11] = com.appzone.game.R.drawable.cell_rectangle_2048;
+        cellRectangleIds[0] = R.drawable.cell_rectangle;
+        cellRectangleIds[1] = R.drawable.cell_rectangle_2;
+        cellRectangleIds[2] = R.drawable.cell_rectangle_4;
+        cellRectangleIds[3] = R.drawable.cell_rectangle_8;
+        cellRectangleIds[4] = R.drawable.cell_rectangle_16;
+        cellRectangleIds[5] = R.drawable.cell_rectangle_32;
+        cellRectangleIds[6] = R.drawable.cell_rectangle_64;
+        cellRectangleIds[7] = R.drawable.cell_rectangle_128;
+        cellRectangleIds[8] = R.drawable.cell_rectangle_256;
+        cellRectangleIds[9] = R.drawable.cell_rectangle_512;
+        cellRectangleIds[10] = R.drawable.cell_rectangle_1024;
+        cellRectangleIds[11] = R.drawable.cell_rectangle_2048;
         for (int xx = 12; xx < cellRectangleIds.length; xx++) {
-            cellRectangleIds[xx] = com.appzone.game.R.drawable.cell_rectangle_4096;
+            cellRectangleIds[xx] = R.drawable.cell_rectangle_4096;
         }
         return cellRectangleIds;
     }
@@ -500,7 +489,7 @@ public class MainView extends View {
     }
 
     private void getLayout(int width, int height) {
-        cellSize = Math.min(width / (game.numSquaresX + 1), height / (game.numSquaresY + 3));
+        cellSize = Math.min(width / (game.numSquaresX + 2), height / (game.numSquaresY + 3));
         gridWidth = cellSize / 7;
         int screenMiddleX = width / 2;
         int screenMiddleY = height / 2;
@@ -524,21 +513,21 @@ public class MainView extends View {
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setTextSize(1000);
         instructionsTextSize = Math.min(
-            1000f * (widthWithPadding / (paint.measureText(getResources().getString(com.appzone.game.R.string.instructions)))),
-            textSize / 1.5f
+                1000f * (widthWithPadding / (paint.measureText(getResources().getString(R.string.instructions)))),
+                textSize / 1.5f
         );
         gameOverTextSize = Math.min(
-            Math.min(
-                1000f * ((widthWithPadding - gridWidth * 2) / (paint.measureText(getResources().getString(com.appzone.game.R.string.game_over)))),
-                textSize * 2
-            ),
-            1000f * ((widthWithPadding - gridWidth * 2) / (paint.measureText(getResources().getString(com.appzone.game.R.string.you_win))))
+                Math.min(
+                        1000f * ((widthWithPadding - gridWidth * 2) / (paint.measureText(getResources().getString(R.string.game_over)))),
+                        textSize * 2
+                ),
+                1000f * ((widthWithPadding - gridWidth * 2) / (paint.measureText(getResources().getString(R.string.you_win))))
         );
 
         paint.setTextSize(cellSize);
         cellTextSize = textSize;
         titleTextSize = textSize / 3;
-        bodyTextSize = (int) (textSize / 1.5);
+        bodyTextSize = (int) (textSize );
         headerTextSize = textSize * 2;
         textPaddingSize = (int) (textSize / 3);
         iconPaddingSize = (int) (textSize / 5);
@@ -551,8 +540,8 @@ public class MainView extends View {
         titleStartYAll = (int) (sYAll + textPaddingSize + titleTextSize / 2 - textShiftYAll);
         bodyStartYAll = (int) (titleStartYAll + textPaddingSize + titleTextSize / 2 + bodyTextSize / 2);
 
-        titleWidthHighScore = (int) (paint.measureText(getResources().getString(com.appzone.game.R.string.high_score)));
-        titleWidthScore = (int) (paint.measureText(getResources().getString(com.appzone.game.R.string.score)));
+        titleWidthHighScore = (int) (paint.measureText(getResources().getString(R.string.high_score)));
+        titleWidthScore = (int) (paint.measureText(getResources().getString(R.string.score)));
         paint.setTextSize(bodyTextSize);
         textShiftYAll = centerText();
         eYAll = (int) (bodyStartYAll + textShiftYAll + bodyTextSize / 2 + textPaddingSize);

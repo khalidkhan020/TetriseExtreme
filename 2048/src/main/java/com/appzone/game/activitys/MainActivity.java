@@ -1,10 +1,13 @@
-package com.appzone.game;
+package com.appzone.game.activitys;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.KeyEvent;
+
+import com.appzone.game.MainView;
+import com.appzone.game.Tile;
 
 public class MainActivity extends ActionBarActivity {
 
